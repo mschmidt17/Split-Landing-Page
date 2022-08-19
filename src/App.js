@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react'; 
+import {useState} from 'react';
 import './App.css';
 
-function App() {
+
+export default function App() {
+  const [isHoverLeft, setIsHoverLeft] = useState(false);
+  const [isHoverRight, setIsHoverRight] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div
+        className={`container${isHoverLeft ? ' hover-left' : ''}${
+          isHoverRight ? ' hover-right' : ''
+        }`}
+      >
+        <div
+          className="split-left"
+          onMouseEnter={() => setIsHoverLeft(true)}
+          onMouseLeave={() => setIsHoverLeft(false)}
         >
-          Learn React
-        </a>
-      </header>
+          <button className="btn-left"> VERANO </button>
+        </div>
+        <div
+          className="split-right"
+          onMouseEnter={() => setIsHoverRight(true)}
+          onMouseLeave={() => setIsHoverRight(false)}
+        >
+          <button className="btn-right"> INVIERNO </button>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default App;

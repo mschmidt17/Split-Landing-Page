@@ -1,38 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* --left-bg-color: rgba(130, 128, 233, 0.411);
+  --right-bg-color: rgba(43, 43, 43, 0.466);  */
+  --left-btn-hover-color: rgba(24, 24, 39, 0.473);
+  --right-btn-hover-color: rgba(24, 24, 39, 0.596);
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 1000ms;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.btn-left, .btn-right {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  width: 15rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-left{
+    color: #fff;
+    border: 3.2px solid #fff;
+    background-color: rgba(24, 24, 39, 0.473);
+}
+.btn-right{
+    color: rgb(13, 13, 14);
+    border: 3.2px solid rgb(13, 13, 14);
+    background-color: rgba(255, 255, 255, 0.452);
+    font-weight: bolder;
+}
+
+.split-left, .split-right {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.split-left {
+    left: 0;
+    background-image: url("https://i.pinimg.com/originals/0b/b8/8e/0bb88e00c93fb9ee3964cd3f2e4ea83e.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split-left::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--left-bg-color);
+}
+
+.btn-left:hover {
+    background: rgba(0, 0, 0, 0.788);
+    font-weight: bolder;
+}
+
+
+.split-right {
+    right: 0;
+    background-image: url(https://i.pinimg.com/originals/3b/66/8b/3b668b22a2752e7b567d1fd2d1e44697.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+.split-right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--right-bg-color);
+}
+
+.btn-right:hover {
+    background: var(--right-btn-hover-color);
+    color: #fff;
+}
+
+.split-right,
+.split-left,
+.split-right::before,
+.split-left::before {
+transition: all var(--speed) ease-in-out;
+}
+
+
+.hover-left .split-left {
+    width: var(--hover-width);
+}
+
+.hover-left .split-right {
+    width: var(--other-width);
+}
+
+.hover-right .split-right {
+    width: var(--hover-width);
+}
+
+.hover-right  .split-left {
+    width: var(--other-width);
+}
+
+
+@media (max-width: 800px) {
+  h1 {
+    top: 30%;
+    font-size: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+  .btn {
+    padding: 1.2rem;
+    width: 12rem;
   }
 }
